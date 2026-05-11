@@ -1,0 +1,76 @@
+.btn {
+  color: rgb(31, 95, 198);
+  font-family: sans-serif;
+  font-weight: bold;
+  padding: 8px 15px 8px 15px;
+  font-size: 15px;
+  border-style: solid;
+  border-color: rgb(31, 95, 198);
+  background-color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 10px 5px;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+.btn:hover {
+  background-color: rgb(31, 95, 198);
+  color: white;
+}
+
+.box {
+  border: 2px solid;
+  padding: 10px 40px 40px 40px;
+  border-radius: 3px;
+  width: fit-content;
+  border-color: rgb(31, 95, 198);
+  font-family: sans-serif;
+  color: rgb(15, 70, 159);
+  font-weight: bold;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+  cursor: pointer;
+  text-align: center;
+}
+.label{
+    color: rgb(15, 70, 159);
+    font-weight: bold;
+}
+.box:hover {
+  background-color: rgba(31, 95, 198, 0.085);
+}
+
+.heading {
+  text-align: center;
+}
+.field {
+  padding: 5px 10px 5px 10px;
+  margin: 5px 0px 5px 0px;
+  border-radius: 3px;
+  border: 1px solid;
+  border-color: rgb(31, 95, 198);
+  font-family: sans-serif;
+  color: rgb(31, 95, 198);
+  font-weight: bold;
+  transition: background-color 0.15s,
+                border 0.15s;
+}
+.field:hover {
+  background-color: rgba(31, 95, 198, 0.085);
+  border: rgb(31, 95, 198) solid 2px;
+}
+.field::selection{
+  background-color: rgba(31, 95, 198, 0.085);
+  border: rgb(31, 95, 198) solid 2px;
+}
+
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
