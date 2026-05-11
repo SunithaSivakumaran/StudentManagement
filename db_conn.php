@@ -5,7 +5,7 @@
     $db_name="student_management";
 
     try {
-        mysqli_connect($host,$host_name,$host_pwd,$db_name);
+       $conn= mysqli_connect($host,$host_name,$host_pwd,$db_name);
         echo "Connection succesful.<br>";
     }
     catch(mysqli_sql_exception){

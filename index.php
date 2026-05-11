@@ -1,5 +1,5 @@
 <?php
-    include("conn.php");
+    include("db_conn.php");
     session_start();
 ?>
 <!DOCTYPE html>
@@ -15,6 +15,7 @@
     <div class="box">
         <form action="<?php $_SERVER["PHP_SELF"]?>">
         <h2 class="heading">Log in</h2>
+        <hr>
         <table>
             <tr>
                 <td class="label">Username</td>
@@ -26,7 +27,6 @@
             </tr>
         </table>
         <input type="submit" name="login" value="Log in" class="btn">
-        <input type="submit" name="register" value="Register" class="btn">
         </form>
     </div>
     </div>
@@ -34,6 +34,7 @@
 </html>
 <?php
     include("./functions/login.php");
-    UserLogIN($_POST["usename"])
+    include("./base.php");
+    
 
 ?>
