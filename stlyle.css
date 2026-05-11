@@ -1,3 +1,7 @@
+body {
+  background-color: #f5f7fa;
+}
+
 .btn {
   color: rgb(31, 95, 198);
   font-family: sans-serif;
@@ -13,14 +17,14 @@
   transition:
     background-color 0.15s,
     color 0.15s,
-    opacity 2s;
+    opacity 0.15s;
 }
-.btn:hover:not(:active) {
+.btn:hover {
   background-color: rgb(31, 95, 198);
   color: white;
 }
 .btn:active {
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 .box {
@@ -76,4 +80,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.header-wrapper {
+  position: relative;
+  height: 50px; /* gives space for absolute elements */
+  margin-bottom: 15px;
+  padding-top: 10px;
+}
+
+.title {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 25px;
+  font-family: sans-serif;
+  color: #1f5fc6;
+  margin: 0;
+}
+.reg {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
