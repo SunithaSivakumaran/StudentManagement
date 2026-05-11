@@ -15,35 +15,44 @@
             <table>
                 <tr>
                     <td class="label">Name</td>
-                    <td>: <input type="text" name="name" class="field"  required></td>
+                    <td>: <input type="text" name="name" class="field"  ></td>
                 </tr>
                 <tr>
                     <td class="label">Email</td>
-                    <td>: <input type="email" name="email" class="field"  required></td>
+                    <td>: <input type="email" name="email" class="field"  ></td>
                 </tr>
                 <tr>
                     <td class="label">Phone Number</td>
-                    <td>: <input type="text" name="pho_no" class="field"  required></td>
+                    <td>: <input type="text" name="pho_no" class="field"  ></td>
                 </tr>
                 <tr>
                     <td class="label">Department</td>
-                    <td>: <input type="text" name="department" class="field"  required></td>
+                    <td>: <input type="text" name="department" class="field"  ></td>
                 </tr>
                 <tr>
                     <td class="label">Username</td>
-                    <td>: <input type="text" name="username" class="field"  required></td>
+                    <td>: <input type="text" name="username" class="field"  ></td>
                 </tr>
                 <tr>
                     <td class="label">Password</td>
-                    <td>: <input type="text" name="password" class="field"  required></td>
+                    <td>: <input type="text" name="password" class="field" ></td>
                 </tr>
             </table>
             <input type="submit" name="register" value="Register" class="btn" >
+            <input type="submit" name="back" value="Back" class="btn">
             </form>
             <?php
+            include("functions/login.php");
                 if(isset($_POST["register"])){
-                    $username=filter_input(INPUT_POST,"username",FILTER_SANITIZE_SPECIAL_CHARS);
-                    $password=$_POST["password"];
+                    if(fieldEmpty('username',$_POST['username']) && fieldEmpty('password',$_POST['password']) ){
+                        $username=filter_input(INPUT_POST,"username",FILTER_SANITIZE_SPECIAL_CHARS);
+                        $password=$_POST["password"];
+                    }
+                    
+                }
+                else if(isset($_POST["back"])){
+                    header("Location: adminHome.php");
+                    exit();
                 }
             ?>
         </div>

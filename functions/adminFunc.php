@@ -29,4 +29,6 @@
             echo "<div class='error'>student registration failed".mysqli_error($conn)."</div>";
         }
     }
+
+    function 
 ?>
