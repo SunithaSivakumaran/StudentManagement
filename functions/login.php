@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .error{
+            color: red;
+            font-size: 15px;
+            text-align: center;
+            font-weight: normal;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
 <?php
     
     function UserLogIN($conn,$username,$password){
@@ -8,20 +28,20 @@
             $user=mysqli_fetch_assoc($result);
             if(password_verify($password,$user["password"])){
                 
-                echo "Login successful";
+                //echo "Login successful";
                 return $user;
             }
             else{
-                echo "Wrong password";
+                echo "<div class='error'>Wrong password!!!</div>";
             }
         }
         else{
-            echo "There is no such username";
+            echo "<div class='error'>There is no such a user !!</div>";
 
         }
         }
         else{
-                echo "Coudnt perform query". mysqli_error($conn);
+                echo "</div class='error'>Coudnt perform query!!". mysqli_error($conn)."</div>";
         }
         
         

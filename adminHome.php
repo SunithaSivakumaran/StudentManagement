@@ -19,5 +19,8 @@
 </body>
 </html>
 <?php
-
+    if(isset($_POST["register"])){
+        header("Location: regStudent.php");
+        exit();
+    }
 ?>

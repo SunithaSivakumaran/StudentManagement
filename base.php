@@ -22,7 +22,10 @@
                     "CREATE TABLE IF NOT EXISTS selections(s_id int NOT NULL,
                     course_unit VARCHAR(10) NOT NULL,
                     CONSTRAINT fk_selStud FOREIGN KEY(s_id) REFERENCES students(s_id),
-                    CONSTRAINT fk_selCour FOREIGN KEY(course_unit) REFERENCES courses(course_unit))");
+                    CONSTRAINT fk_selCour FOREIGN KEY(course_unit) REFERENCES courses(course_unit))",
+                    
+                    "ALTER TABLE students 
+                    MODIFY COLUMN department ENUM('Computer Science','Physical Science','Biological Science')" );
 
     foreach($tableQuery as $query){
         if(mysqli_query($conn,$query)){
