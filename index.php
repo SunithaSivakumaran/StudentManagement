@@ -13,28 +13,44 @@
 <body>
     <div class="wrapper">
     <div class="box">
-        <form action="<?php $_SERVER["PHP_SELF"]?>">
+        <form action="<?php $_SERVER["PHP_SELF"]?>" method="post">
         <h2 class="heading">Log in</h2>
         <hr>
         <table>
             <tr>
                 <td class="label">Username</td>
-                <td>: <input type="text" name="username" class="field"></td>
+                <td>: <input type="text" name="username" class="field"  required></td>
             </tr>
             <tr>
                 <td class="label">Password</td>
-                <td>: <input type="password" name="password" class="field"></td>
+                <td>: <input type="password" name="password" class="field"  required></td>
             </tr>
         </table>
-        <input type="submit" name="login" value="Log in" class="btn">
+        <input type="submit" name="login" value="Log in" class="btn" >
         </form>
     </div>
     </div>
 </body>
 </html>
 <?php
-    include("./functions/login.php");
-    include("./base.php");
     
+    include("./functions/login.php");
+    if(isset($_POST["login"])){
+        $username=filter_input(INPUT_POST,"username",FILTER_SANITIZE_SPECIAL_CHARS);
+        $password=$_POST["password"];
+        $user=UserLogIN($conn,$username,$password);
+        if($user){
+            $_SESSION["user"]=$user["username"];
+            $_SESSION["id"]=$user["u_id"];
 
+            if($user["role"]=='admin'){
+                header("Location: adminHome.php");
+                exit();
+            }
+        }
+        
+            
+        
+         
+    }
 ?>

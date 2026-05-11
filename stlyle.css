@@ -12,11 +12,15 @@
   margin: 10px 5px;
   transition:
     background-color 0.15s,
-    color 0.15s;
+    color 0.15s,
+    opacity 2s;
 }
-.btn:hover {
+.btn:hover:not(:active) {
   background-color: rgb(31, 95, 198);
   color: white;
+}
+.btn:active {
+  opacity: 0.4;
 }
 
 .box {
@@ -34,9 +38,9 @@
   cursor: pointer;
   text-align: center;
 }
-.label{
-    color: rgb(15, 70, 159);
-    font-weight: bold;
+.label {
+  color: rgb(15, 70, 159);
+  font-weight: bold;
 }
 .box:hover {
   background-color: rgba(31, 95, 198, 0.085);
@@ -54,23 +58,22 @@
   font-family: sans-serif;
   color: rgb(31, 95, 198);
   font-weight: bold;
-  transition: background-color 0.15s,
-                border 0.15s;
+  transition:
+    background-color 0.15s,
+    border 0.15s;
 }
 .field:hover {
   background-color: rgba(31, 95, 198, 0.085);
   border: rgb(31, 95, 198) solid 2px;
 }
-.field::selection{
+.field::selection {
   background-color: rgba(31, 95, 198, 0.085);
   border: rgb(31, 95, 198) solid 2px;
 }
 
-
 .wrapper {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
