@@ -28,11 +28,9 @@
         </table>
         <input type="submit" name="login" value="Log in" class="btn" >
         </form>
-    </div>
-    </div>
-</body>
-</html>
-<?php
+
+
+        <?php
     
     include("./functions/login.php");
     if(isset($_POST["login"])){
@@ -52,5 +50,11 @@
             
         
          
-    }
-?>
+        
+         }
+        ?>
+        
+    </div>
+    </div>
+</body>
+</html>
