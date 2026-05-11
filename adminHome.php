@@ -11,7 +11,10 @@
 </head>
 <body>
     <form action="<?php $_SERVER["PHP_SELF"]?>" method="post">
-        <input type="submit" name="register" value="Register Student" class="btn">
+        <div class="header-wrapper">
+            <h2 class="title">Student Details</h2>
+        <input type="submit" name="register" value="Register Student" class="btn reg">
+        </div>
     </form>
 </body>
 </html>
