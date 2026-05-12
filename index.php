@@ -13,7 +13,7 @@
 <body>
     <div class="wrapper">
     <div class="box">
-        <form action="<?php $_SERVER["PHP_SELF"]?>" method="post">
+        <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
         <h2 class="heading">Log in</h2>
         <hr>
         <table>

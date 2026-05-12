@@ -19,7 +19,6 @@
 </html>
 
 <?php
-    include("login.php");
 
     function userID($conn,$username){
         $query="SELECT u_id FROM users WHERE username= '$username'";
@@ -38,6 +37,21 @@
         }
         else{
             echo "<div class='error'>Coudnt perform query!!". mysqli_error($conn)."</div>";
+        }
+    }
+
+    function createStudent($name,$email,$pho_no,$department,$u_id,$conn){
+           
+        $query="INSERT INTO students(name,email,pho_no,department,u_id) VALUES('$name','$email','$pho_no','$department','$u_id')";
+
+        if(mysqli_query($conn,$query)){
+            //echo "student created succesfully";
+            return true;
+        }
+        else{
+            //echo "Coudnt create".mysqli_error($conn);
+            return false;
+
         }
     }
 
