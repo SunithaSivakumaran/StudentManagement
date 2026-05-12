@@ -10,10 +10,11 @@
     <title>Home</title>
 </head>
 <body>
-    <form action="<?php $_SERVER["PHP_SELF"]?>" method="post">
+    <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
         <div class="header-wrapper">
+            
             <h2 class="title">Student Details</h2>
-        <input type="submit" name="register" value="Register Student" class="btn reg">
+            <input type="submit" name="register" value="Register Student" class="btn reg">
         
         </div>
     </form>

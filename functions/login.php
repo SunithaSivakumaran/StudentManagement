@@ -63,7 +63,7 @@
         $loginQuery="INSERT INTO users(username,password) VALUES('$usernane','$hash')";
 
         if(mysqli_query($conn,$loginQuery)){
-            echo "User created successfully";
+            //echo "User created successfully";
         }
         else{
             echo "<div class='error'>Coudnt create a user".mysqli_error($conn)."</div>";

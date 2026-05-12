@@ -13,21 +13,21 @@
 <body>
     <div class="wrapper">
         <div class="box">
-            <form action="<?php $_SERVER["PHP_SELF"]?>" method="post">
+            <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
             <h2 class="heading">Student Registration</h2>
             <hr>
             <table>
                 <tr>
                     <td class="label">Name</td>
-                    <td>: <input type="text" name="name" class="field" ></td>
+                    <td>: <input type="text" name="name" class="field" placeholder="John"></td>
                 </tr>
                 <tr>
                     <td class="label">Email</td>
-                    <td>: <input type="email" name="email" class="field"  ></td>
+                    <td>: <input type="email" name="email" class="field"  placeholder="1aA4o@example.com"></td>
                 </tr>
                 <tr>
                     <td class="label">Phone Number</td>
-                    <td>:<input type="text" name="pho_no" class="field"  ></td>
+                    <td>:<input type="text" name="pho_no" class="field"  placeholder=" 0123456789"></td>
                 </tr>
                 <tr>
                     <td class="label">Department</td>
@@ -48,11 +48,11 @@
                 </tr>
                 <tr>
                     <td class="label">Username</td>
-                    <td>: <input type="text" name="username" class="field"  ></td>
+                    <td>: <input type="text" name="username" class="field" placeholder="john_123" ></td>
                 </tr>
                 <tr>
                     <td class="label">Password</td>
-                    <td>: <input type="text" name="password" class="field" ></td>
+                    <td>: <input type="text" name="password" class="field" placeholder="Happy125%" ></td>
                 </tr>
             </table>
             <input type="submit" name="register" value="Register" class="btn" >
@@ -62,19 +62,30 @@
             include("functions/login.php");
             include("functions/adminFunc.php");
                 if(isset($_POST["register"])){
-                    if(checkEmpty('username',$_POST['username']) && checkEmpty('password',$_POST['password']) && checkEmpty('name',$_POST['name']) && checkEmpty('department',$_POST['department']) ){
+                    if( checkEmpty('name',$_POST['name']) && checkEmpty('department',$_POST['department']) && checkEmpty('username',$_POST['username']) && checkEmpty('password',$_POST['password']) ){
+
                         $username=filter_input(INPUT_POST,"username",FILTER_SANITIZE_SPECIAL_CHARS);
                         $password=$_POST["password"];
+
                         if(!userID($conn,$username) || userID($conn,$username)==null){
+                            
                             registerUser($conn,$username,$password);
+                            $u_id=userID($conn,$username);
+                            $name=filter_input(INPUT_POST,"name",FILTER_SANITIZE_SPECIAL_CHARS);
+                            $email=filter_input(INPUT_POST,"email",FILTER_SANITIZE_EMAIL);//will return empty string if email has the character that should be not There
+                            $pho_no=filter_input(INPUT_POST,"pho_no",FILTER_SANITIZE_NUMBER_INT);
+                            $department=$_POST["department"];
+
+                            if(createStudent($name,$email,$pho_no,$department,$u_id,$conn)){
+                                echo "<div style='color:#28a745;'>Registration succesfull</div>";
+                            }
+                            else{
+                                echo "<div class='error'>Registration failed</div>";
+                            }
+
+
                         }
-                        else{
-                            echo "<div class='error'>Username already exists!!</div>";
-                        }
-                        
-                        
                     }
-                    
                 }
                 else if(isset($_POST["back"])){
                     header("Location: adminHome.php");
