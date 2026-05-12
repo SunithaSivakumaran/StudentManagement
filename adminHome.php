@@ -1,5 +1,6 @@
 <?php
     include("db_conn.php");
+    include("functions/adminFunc.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,10 +13,18 @@
 <body>
     <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
         <div class="header-wrapper">
-            
+
             <h2 class="title">Student Details</h2>
             <input type="submit" name="register" value="Register Student" class="btn reg">
         
+        </div>
+    
+        <div class="wrapper-1">
+                <div class="table" >
+                    <?php
+                        getUser($conn)
+                    ?>
+                </div>
         </div>
     </form>
 </body>
@@ -27,3 +36,4 @@
     }
     
 ?>
+

@@ -46,6 +46,13 @@
                 header("Location: adminHome.php");
                 exit();
             }
+            elseif($user["role"]=='student'){
+                header("Location: studentHome.php");
+                exit();
+            }
+            else{
+                echo "<div class='error'>There is no such a user !!</div>";
+            }
         }
         
         }

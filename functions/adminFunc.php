@@ -55,5 +55,31 @@
         }
     }
 
+    function getUser($conn){
+        $userQuery="SELECT * FROM students";
+        $result=mysqli_query($conn,$userQuery);
+        if($result){
+            echo "<table  border=1>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone Number</th>
+                                    <th>Department</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                </tr>";
+
+            
+                
+                // for(){
+
+                // }
+                        
+        }
+        else{
+            echo "<div class='error'>Coudnt perform query!!". mysqli_error($conn)."</div>";
+        }
+    }
+
 
 ?>
