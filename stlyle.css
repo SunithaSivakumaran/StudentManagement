@@ -1,11 +1,12 @@
 body {
-  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(0,0,0,0.8)), 
-url("./src/akshayapatra-children-306607_1920.jpg");
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8)),
+    url('./src/akshayapatra-children-306607_1920.jpg');
   background-size: cover; /*makes image cover full screen */
-  background-position: center;  /* centers image */
-  background-repeat: no-repeat;  /* no repeating */
+  background-position: center; /* centers image */
+  background-repeat: no-repeat; /* no repeating */
   height: 100vh;
-   
+  background-attachment: fixed;
 }
 
 .btn {
@@ -112,4 +113,71 @@ url("./src/akshayapatra-children-306607_1920.jpg");
   transform: translateY(-50%);
 }
 
+.table {
+  border: none;
+  padding: 10px 15px 15px 15px;
+  border-radius: 3px;
+  width: fit-content;
+  border-color: rgb(31, 95, 198);
+  font-family: sans-serif;
+  color: rgb(15, 70, 159);
+  text-align: center;
+}
 
+.wrapper-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  text-align: center;
+}
+
+.table th {
+  background-color: #1f5fc6;
+  color: white;
+}
+
+.table tr:nth-child(odd) {
+  background-color: #1f5fc68a;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.table button {
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
+  padding: 5px 10px 5px 10px;
+  font-size: 10px;
+  border-style: solid;
+  border-color: rgb(31, 95, 198);
+  background-color: rgb(31, 95, 198);
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 10px 3px;
+  transition:opacity 0.15s;
+}
+
+.table button:hover{
+  opacity: 0.7;
+}
+
+.table button:active{
+  opacity: 0.4;
+}
+
+.table td {
+  padding: 8px 8px;
+}
