@@ -59,27 +59,57 @@
         $userQuery="SELECT * FROM students";
         $result=mysqli_query($conn,$userQuery);
         if($result){
-            echo "<table  border=1>
+
+            $row=mysqli_num_rows($result);
+            if($row>0){
+                echo "<table  border=1>
                                 <tr>
+                                    <th>no</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Department</th>
+                                    <th>Selected Courses</th>
                                     <th>Update</th>
                                     <th>Delete</th>
+                                    
                                 </tr>";
+                    $i=0;
+                //mysqli_fetch_assoc get row one by one
+                while($arrayOfResult=mysqli_fetch_assoc($result)){
+                    $no =$i+1;
+                    echo "<tr>
+                            
+                            <td>{$no}</td>
+                            <td>{$arrayOfResult["name"]}</td>
+                            <td>{$arrayOfResult["email"]}</td>
+                            <td>{$arrayOfResult["pho_no"]}</td>
+                            <td>{$arrayOfResult["department"]}</td>
+                            <td>
+                            <button name='courses' value='{$arrayOfResult["s_id"]}'>Courses</button></td>
+                            <td>
+                            <button name='update' value='{$arrayOfResult["s_id"]}'>Update</button>
+                            </td>
+                            <td>
+                            <button name='delete' value='{$arrayOfResult["s_id"]}'>Delete</button>
+                            </td>
+                        </tr>";
 
-            
-                
-                // for(){
-
-                // }
+                    $i++; 
                         
+                }
+                
+            }
+            else{
+                echo "<div class='error'>Students table is empty</div>";
+            }
         }
         else{
             echo "<div class='error'>Coudnt perform query!!". mysqli_error($conn)."</div>";
         }
     }
+
+
 
 
 ?>

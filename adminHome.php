@@ -22,7 +22,7 @@
         <div class="wrapper-1">
                 <div class="table" >
                     <?php
-                        getUser($conn)
+                        getUser($conn);
                     ?>
                 </div>
         </div>
@@ -33,6 +33,10 @@
     if(isset($_POST["register"])){
         header("Location: regStudent.php");
         exit();
+    }
+    if(isset($_POST["update"])){
+        // echo "{$_POST['update']}";
+        header("Location: updateStudent.php");
     }
     
 ?>
