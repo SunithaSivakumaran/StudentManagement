@@ -19,11 +19,11 @@
         <table>
             <tr>
                 <td class="label">Username</td>
-                <td>: <input type="text" name="username" class="field"  required></td>
+                <td>: <input type="text" name="username" class="field"  ></td>
             </tr>
             <tr>
                 <td class="label">Password</td>
-                <td>: <input type="password" name="password" class="field"  required></td>
+                <td>: <input type="password" name="password" class="field"  ></td>
             </tr>
         </table>
         <input type="submit" name="login" value="Log in" class="btn" >
@@ -34,17 +34,20 @@
     
     include("./functions/login.php");
     if(isset($_POST["login"])){
-        $username=filter_input(INPUT_POST,"username",FILTER_SANITIZE_SPECIAL_CHARS);
-        $password=$_POST["password"];
-        $user=UserLogIN($conn,$username,$password);
-        if($user){
-            $_SESSION["user"]=$user["username"];
-            $_SESSION["id"]=$user["u_id"];
+        if(checkEmpty('username',$_POST["username"]) && checkEmpty('password',$_POST["password"])){
+            $username=filter_input(INPUT_POST,"username",FILTER_SANITIZE_SPECIAL_CHARS);
+            $password=$_POST["password"];
+            $user=UserLogIN($conn,$username,$password);
+            if($user){
+                $_SESSION["user"]=$user["username"];
+                $_SESSION["id"]=$user["u_id"];
 
             if($user["role"]=='admin'){
                 header("Location: adminHome.php");
                 exit();
             }
+        }
+        
         }
         
             
@@ -53,7 +56,7 @@
         
          }
         ?>
-        
+
     </div>
     </div>
 </body>

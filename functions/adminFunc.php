@@ -19,14 +19,27 @@
 </html>
 
 <?php
-    function regStudent($conn,$name,$u_id,$department,$pho_no,$email){
-        $insertQuery="INSERT INTO students(name,u_id,department,pho_no,email)
-        values('$name','$u_id','$department','$pho_no','$email')";
-        if(mysqli_query($conn,$insertQuery)){
-            echo "student registered successfully";
+    include("login.php");
+
+    function userID($conn,$username){
+        $query="SELECT u_id FROM users WHERE username= '$username'";
+
+        $result=mysqli_query($conn,$query);
+        
+        if($result){
+            $rows=mysqli_num_rows($result);
+            if($rows>0){
+                $result_array=mysqli_fetch_assoc($result);
+                return $result_array['u_id'];
+            }
+            else{
+                return false;
+            }
         }
         else{
-            echo "<div class='error'>student registration failed".mysqli_error($conn)."</div>";
+            echo "<div class='error'>Coudnt perform query!!". mysqli_error($conn)."</div>";
         }
     }
+
+
 ?>

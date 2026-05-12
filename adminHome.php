@@ -14,6 +14,7 @@
         <div class="header-wrapper">
             <h2 class="title">Student Details</h2>
         <input type="submit" name="register" value="Register Student" class="btn reg">
+        
         </div>
     </form>
 </body>
@@ -23,4 +24,5 @@
         header("Location: regStudent.php");
         exit();
     }
+    
 ?>

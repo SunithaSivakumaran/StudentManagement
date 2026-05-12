@@ -47,4 +47,26 @@
         
         
     }
+
+    function checkEmpty($name,$value){
+        if(empty($value)){
+            echo "<div class='error'>{$name} is empty!!</div>";
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    function registerUser($conn,$usernane,$password){
+        $hash=password_hash($password,PASSWORD_DEFAULT);
+        $loginQuery="INSERT INTO users(username,password) VALUES('$usernane','$hash')";
+
+        if(mysqli_query($conn,$loginQuery)){
+            echo "User created successfully";
+        }
+        else{
+            echo "<div class='error'>Coudnt create a user".mysqli_error($conn)."</div>";
+        }
+    }
 ?>
