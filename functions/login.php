@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         .error{
-            color: rgb(201, 0, 0);
-            font-size: 17px;
+            color: red;
+            font-size: 15px;
             text-align: center;
-            font-weight:normal;
-            font-family:sans-serif;
+            font-weight: normal;
         }
     </style>
     <title>Document</title>
@@ -49,12 +48,25 @@
         
     }
 
-    function fieldEmpty($name,$value){
+    function checkEmpty($name,$value){
         if(empty($value)){
             echo "<div class='error'>{$name} is empty!!</div>";
+            return false;
         }
         else{
             return true;
+        }
+    }
+
+    function registerUser($conn,$usernane,$password){
+        $hash=password_hash($password,PASSWORD_DEFAULT);
+        $loginQuery="INSERT INTO users(username,password) VALUES('$usernane','$hash')";
+
+        if(mysqli_query($conn,$loginQuery)){
+            echo "User created successfully";
+        }
+        else{
+            echo "<div class='error'>Coudnt create a user".mysqli_error($conn)."</div>";
         }
     }
 ?>

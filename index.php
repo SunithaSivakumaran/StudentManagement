@@ -34,7 +34,7 @@
     
     include("./functions/login.php");
     if(isset($_POST["login"])){
-        if(fieldEmpty('username',$_POST["username"]) && fieldEmpty('password',$_POST["password"])){
+        if(checkEmpty('username',$_POST["username"]) && checkEmpty('password',$_POST["password"])){
             $username=filter_input(INPUT_POST,"username",FILTER_SANITIZE_SPECIAL_CHARS);
             $password=$_POST["password"];
             $user=UserLogIN($conn,$username,$password);

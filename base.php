@@ -25,7 +25,10 @@
                     CONSTRAINT fk_selCour FOREIGN KEY(course_unit) REFERENCES courses(course_unit))",
                     
                     "ALTER TABLE students 
-                    MODIFY COLUMN department ENUM('Computer Science','Physical Science','Biological Science')" );
+                    MODIFY COLUMN department ENUM('Computer Science','Physical Science','Biological Science')",
+                    
+                    "ALTER TABLE users 
+                    MODIFY COLUMN role ENUM('admin','student') DEFAULT 'student'");
 
     foreach($tableQuery as $query){
         if(mysqli_query($conn,$query)){
