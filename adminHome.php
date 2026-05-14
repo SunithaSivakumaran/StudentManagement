@@ -1,6 +1,20 @@
 <?php
+    session_start();
     include("db_conn.php");
     include("functions/adminFunc.php");
+    
+    if(isset($_POST["register"])){
+        header("Location: regStudent.php");
+        exit();
+    }
+    
+     if(isset($_POST["profile"])){
+        $sid=$_POST["profile"];
+        $_SESSION["s_id"]=$sid;
+        header("Location: profile.php");
+        exit();
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,15 +43,5 @@
     </form>
 </body>
 </html>
-<?php
-    if(isset($_POST["register"])){
-        header("Location: regStudent.php");
-        exit();
-    }
-    if(isset($_POST["update"])){
-        // echo "{$_POST['update']}";
-        header("Location: updateStudent.php");
-    }
-    
-?>
+
 
