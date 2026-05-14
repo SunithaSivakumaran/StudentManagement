@@ -69,9 +69,7 @@
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Department</th>
-                                    <th>Selected Courses</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
+                                    <th>See Profile</th>
                                     
                                 </tr>";
                     $i=0;
@@ -86,13 +84,8 @@
                             <td>{$arrayOfResult["pho_no"]}</td>
                             <td>{$arrayOfResult["department"]}</td>
                             <td>
-                            <button name='courses' value='{$arrayOfResult["s_id"]}'>Courses</button></td>
-                            <td>
-                            <button name='update' value='{$arrayOfResult["s_id"]}'>Update</button>
-                            </td>
-                            <td>
-                            <button name='delete' value='{$arrayOfResult["s_id"]}'>Delete</button>
-                            </td>
+                            <button name='profile' value='{$arrayOfResult["s_id"]}'>Profile</button></td>
+            
                         </tr>";
 
                     $i++; 

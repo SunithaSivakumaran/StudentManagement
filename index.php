@@ -1,6 +1,7 @@
 <?php
-    include("db_conn.php");
     session_start();
+    include("db_conn.php");
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stlyle.css">
-    <title>Document</title>
+    <title>Student Management</title>
 </head>
 <body>
     <div class="wrapper">
@@ -47,7 +48,7 @@
                 exit();
             }
             elseif($user["role"]=='student'){
-                header("Location: studentHome.php");
+                header("Location: profile.php");
                 exit();
             }
             else{

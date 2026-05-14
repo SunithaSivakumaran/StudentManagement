@@ -133,6 +133,7 @@ body {
 .table table {
   width: 100%;
   border-collapse: collapse;
+  border-color: #1f5fc6;
 }
 
 .table th,
@@ -148,6 +149,7 @@ body {
 
 .table tr:nth-child(odd) {
   background-color: #1f5fc68a;
+  color: white;
 }
 
 .table tr:nth-child(even) {
@@ -156,25 +158,34 @@ body {
 }
 
 .table button {
-  color: white;
   font-family: sans-serif;
   font-weight: bold;
   padding: 5px 10px 5px 10px;
   font-size: 10px;
   border-style: solid;
-  border-color: rgb(31, 95, 198);
-  background-color: rgb(31, 95, 198);
   border-radius: 3px;
   cursor: pointer;
   margin: 10px 3px;
-  transition:opacity 0.15s;
+  transition: opacity 0.15s;
 }
 
-.table button:hover{
+.table tr:nth-child(even) button {
+  color: white;
+  border-color: white;
+  background-color: rgb(31, 95, 198);
+}
+
+.table tr:nth-child(odd) button {
+  color: rgb(31, 95, 198);
+  border-color: rgb(31, 95, 198);
+  background-color: white;
+}
+
+.table button:hover {
   opacity: 0.7;
 }
 
-.table button:active{
+.table button:active {
   opacity: 0.4;
 }
 
