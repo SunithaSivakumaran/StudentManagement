@@ -18,8 +18,15 @@
             <hr>
             <table>
                 <tr>
-                    <td class="label">Name</td>
+                    <td class="label">Full Name:</td>
                     <td>: <input type="text" name="name" class="field" placeholder="John"></td>
+                </tr>
+                <tr>
+                    <td class="label">Date Of Birth</td><td> :<input type="date" name="dob" class="field" ></td>
+                </tr>
+                <tr>
+                    <td class="label">Gender</td>
+                    <td>:<input type="text" name="gender" class="field" placeholder="Male/Female"></td>
                 </tr>
                 <tr>
                     <td class="label">Email</td>
@@ -28,6 +35,10 @@
                 <tr>
                     <td class="label">Phone Number</td>
                     <td>:<input type="text" name="pho_no" class="field"  placeholder=" 0123456789"></td>
+                </tr>
+                <tr>
+                    <td class="label">Address</td>
+                    <td>: <input type="text" name="address" class="field" placeholder="House no, Road name, City"></td>
                 </tr>
                 <tr>
                     <td class="label">Department</td>
