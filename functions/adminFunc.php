@@ -5,9 +5,13 @@
     include("footer.html");
 
     function userID($conn,$username){
-        $query="SELECT u_id FROM users WHERE username= '$username'";
+        $query="SELECT u_id FROM users WHERE username= ?";
 
-        $result=mysqli_query($conn,$query);
+        $stmt=mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,"s",$username);
+        $qurey=mysqli_stmt_execute($stmt);
+
+        $result=mysqli_stmt_get_result($stmt);
         
         if($result){
             $rows=mysqli_num_rows($result);

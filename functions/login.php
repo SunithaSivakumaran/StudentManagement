@@ -3,8 +3,10 @@
 <?php
     include('footer.html');
     function UserLogIN($conn,$username,$password){
-        $selectUserQuery="SELECT * FROM users WHERE username='$username'";
-        $result=mysqli_query($conn,$selectUserQuery);
+        $selectUserQuery="SELECT * FROM users WHERE username= ?";
+        $stmt=mysqli_prepare($conn,$selectUserQuery);
+        mysqli_stmt_bind_param($stmt,'s',$username);
+        $result=mysqli_stmt_get_result($stmt);
         if($result){
             if(mysqli_num_rows($result)>0){
             $user=mysqli_fetch_assoc($result);
