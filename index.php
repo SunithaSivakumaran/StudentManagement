@@ -44,11 +44,13 @@
                 $_SESSION["id"]=$user["u_id"];
 
             if($user["role"]=='admin'){
+                $_SESSION["role"]=$user["role"];
                 header("Location: adminHome.php");
                 exit();
             }
             elseif($user["role"]=='student'){
-                header("Location: profile.php");
+                $_SESSION["role"]=$user["role"];
+                header("Location: studentProfile.php");
                 exit();
             }
             else{

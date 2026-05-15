@@ -11,7 +11,7 @@
      if(isset($_POST["profile"])){
         $sid=$_POST["profile"];
         $_SESSION["s_id"]=$sid;
-        header("Location: profile.php");
+        header("Location: studentProfile.php");
         exit();
     }
 

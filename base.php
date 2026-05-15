@@ -13,6 +13,10 @@
                     department VARCHAR(25),
                     pho_no VARCHAR(10),
                     email VARCHAR(100),
+                    DOB DATE,
+                    gender ENUM('Male','Female') NOT NULL,
+                    address VARCHAR(100),
+                    reg_Date DATE DEFAULT CURRENT_DATE(),
                     CONSTRAINT fk_stu FOREIGN KEY(u_id) REFERENCES users(u_id) ON DELETE CASCADE)",
                     
                     "CREATE TABLE IF NOT EXISTS courses(course_unit VARCHAR(10) PRIMARY KEY,
@@ -21,8 +25,8 @@
                     
                     "CREATE TABLE IF NOT EXISTS selections(s_id int NOT NULL,
                     course_unit VARCHAR(10) NOT NULL,
-                    CONSTRAINT fk_selStud FOREIGN KEY(s_id) REFERENCES students(s_id),
-                    CONSTRAINT fk_selCour FOREIGN KEY(course_unit) REFERENCES courses(course_unit))",
+                    CONSTRAINT fk_selStud FOREIGN KEY(s_id) REFERENCES students(s_id) ON DELETE CASCADE,
+                    CONSTRAINT fk_selCour FOREIGN KEY(course_unit) REFERENCES courses(course_unit) ON DELETE CASCADE)",
                     
                     "ALTER TABLE students 
                     MODIFY COLUMN department ENUM('Computer Science','Physical Science','Biological Science')",
@@ -146,7 +150,10 @@
 ('CS033', 'DevOps Basics', 'Computer Science'),
 ('PS033', 'Energy Physics Lab', 'Physical Science'),
 ('BS033', 'Genetic Research', 'Biological Science'),
-('CS034', 'System Design', 'Computer Science');");
+('CS034', 'System Design', 'Computer Science');",
+
+                    
+                    );
 
     foreach($tableQuery as $query){
         if(mysqli_query($conn,$query)){
