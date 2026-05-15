@@ -33,6 +33,9 @@
                     
                     "ALTER TABLE users 
                     MODIFY COLUMN role ENUM('admin','student') DEFAULT 'student'",
+
+                    "ALTER TABLE students 
+                    ADD CONSTRAINT unique_email_name UNIQUE(email,name)",
                     
                     "INSERT INTO courses (course_unit, course_name, department) VALUES
 

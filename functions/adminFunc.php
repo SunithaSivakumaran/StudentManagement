@@ -28,16 +28,23 @@
         }
     }
 
-    function createStudent($name,$email,$pho_no,$department,$u_id,$conn){
+    function createStudent($name,$email,$pho_no,$department,$u_id,$gender,$DOB,$address,$conn){
            
-        $query="INSERT INTO students(name,email,pho_no,department,u_id) VALUES('$name','$email','$pho_no','$department','$u_id')";
+        $query="INSERT INTO students(name,email,pho_no,department,u_id,gender,DOB,address) VALUES(?,?,?,?,?,?,?,?)";
 
-        if(mysqli_query($conn,$query)){
+        $stmt=mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,"ssssssss",$name,$email,$pho_no,$department,$u_id,$gender,$DOB,$address);
+        mysqli_stmt_execute($stmt);
+        
+
+        try{
             //echo "student created succesfully";
+            mysqli_stmt_execute($stmt);
             return true;
         }
-        else{
+        catch(mysqli_sql_exception){
             //echo "Coudnt create".mysqli_error($conn);
+            echo "<div class='error'>Coudnt create".mysqli_error($conn)."</div>";
             return false;
 
         }
