@@ -34,17 +34,17 @@
 
         $stmt=mysqli_prepare($conn,$query);
         mysqli_stmt_bind_param($stmt,"ssssssss",$name,$email,$pho_no,$department,$u_id,$gender,$DOB,$address);
-        $result=mysqli_stmt_execute($stmt);
+        
+
+        try{
+            $result=mysqli_stmt_execute($stmt);
         echo "<pre>";
         var_dump($result);
         echo "</pre>";
-
-        if(!$result){
-                echo "SQL ERROR: " . mysqli_stmt_error($stmt);
-                return 0;
         }
-
-        return 1;
+        catch(mysqli_sql_exception){
+            echo "<div class='error'>User already exists</div>";
+        }
     }
 
     function getUser($conn){
@@ -92,6 +92,21 @@
         else{
             echo "<div class='error'>Coudnt perform query!!". mysqli_error($conn)."</div>";
         }
+    }
+
+    function deleteUser($conn,$u_id){
+        $query="DELETE FROM users WHERE u_id=?";
+        $stmt=mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,'i',$u_id);
+        $result=mysqli_stmt_execute($stmt);
+
+        if($result){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+
     }
 
 

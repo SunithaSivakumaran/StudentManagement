@@ -95,6 +95,7 @@
                                 echo "<div style='color:#28a745;'>Registration succesfull</div>";
                             }
                             else{
+                                deleteUser($conn,userID($conn,$username));
                                 echo "<div class='error'>Registration failed</div>";
                             }
                     //         echo "<script>
@@ -103,7 +104,8 @@
 
                         }
                         else{
-                            echo "<div class='error'>User name already exists, So change the username</div>";
+                            
+                            echo "<div class='error'>Username already exists, So change the username</div>";
                         }
                     }
                 }
