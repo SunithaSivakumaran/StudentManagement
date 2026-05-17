@@ -86,6 +86,23 @@
 
             }
         }
+
+        function btn($role){
+            if($role=='student'){
+                echo "  <button name='update'>Update</button>
+                        <button name='logout'>Logout</button>
+                        ";
+            }
+            elseif($role=='admin'){
+                echo "
+                    <button name='update'>Update</button>
+                    <button name='back'>Back</button>
+                        ";
+            }
+            else{
+                echo "<div class='error'>There is no such a role</div>";
+            }
+        }
     
 
 
