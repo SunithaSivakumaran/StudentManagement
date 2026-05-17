@@ -13,7 +13,7 @@
 <body>
     <div class="wrapper">
         <div class="box">
-            <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
+            <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post" >
             <h2 class="heading">Student Registration</h2>
             <hr>
             <table>
@@ -73,6 +73,7 @@
             include("functions/login.php");
             include("functions/adminFunc.php");
                 if(isset($_POST["register"])){
+                    
                     if( checkEmpty('name',$_POST['name']) && checkEmpty('department',$_POST['department']) && checkEmpty('username',$_POST['username']) && checkEmpty('password',$_POST['password']) && checkempty('gender',$_POST['gender'])) {
 
                         $username=filter_input(INPUT_POST,"username",FILTER_SANITIZE_SPECIAL_CHARS);
@@ -96,12 +97,20 @@
                             else{
                                 echo "<div class='error'>Registration failed</div>";
                             }
+                    //         echo "<script>
+                    //     document.getElementById('regForm').reset();
+                    // </script>";
 
-
+                        }
+                        else{
+                            echo "<div class='error'>User name already exists, So change the username</div>";
                         }
                     }
                 }
                 else if(isset($_POST["back"])){
+                    // echo "<script>
+                    //     document.getElementById('regForm').reset();
+                    // </script>";
                     header("Location: adminHome.php");
                     exit();
                 }
