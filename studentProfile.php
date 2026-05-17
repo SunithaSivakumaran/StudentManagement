@@ -6,9 +6,7 @@ include ("./functions/studentFunc.php");
 
     if(isset($_SESSION["s_id"])) {
     $s_id = $_SESSION["s_id"];
-} else {
-    echo "No session value found";
-}
+    } 
 
     
         if($_SESSION['role']=='student'){
@@ -29,13 +27,21 @@ include ("./functions/studentFunc.php");
     <title>Student Profile</title>
 </head>
 <body>
+    <div class="wrapper-2">
+        <div class="box2">
     <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
-        <div class="wrapper-2 ">
-            <?php profile($conn,$s_id);?>
+        <table>
+            <tr>
+                <td><label for="">Full Name</label></td>
+                <td>:<input type="text" name="name" value="<?php echo infoStudent($conn,$s_id,'name')?>"></td>
+            </tr>
+        </table>
             
             
-        </div>
+        
     </form>
+    </div>
+</div>
 </body>
 </html>
 

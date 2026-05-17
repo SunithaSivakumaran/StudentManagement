@@ -197,19 +197,30 @@ body {
   display: flex;
   justify-content: left;
   align-items: center;
-  color: rgb(31, 95, 198);
-  padding-top: 50px;
   font-size: 20px;
   font-family: sans-serif;
-
+  padding: 20px;
 }
 
-.wrapper-2 label{
+.wrapper-2 label {
+  color: rgb(15, 70, 159);
+  
+  font-weight: bold;
+}
+
+.wrapper-2 tr {
+  padding: 20px 20px;
+}
+
+.box2 {
+  border: 2px solid;
+  padding: 20px;
+  border-radius: 3px;
+  width: 100vw;
+  height: auto;
+  border-color: rgb(31, 95, 198);
+  font-family: sans-serif;
   color: rgb(31, 95, 198);
   font-weight: bold;
-  
-}
-
-.wrapper-2 tr{
-  padding: 10px 10px;
+  text-align: left;
 }

@@ -6,6 +6,7 @@
         $selectUserQuery="SELECT * FROM users WHERE username= ?";
         $stmt=mysqli_prepare($conn,$selectUserQuery);
         mysqli_stmt_bind_param($stmt,'s',$username);
+        mysqli_stmt_execute($stmt);
         $result=mysqli_stmt_get_result($stmt);
         if($result){
             if(mysqli_num_rows($result)>0){
