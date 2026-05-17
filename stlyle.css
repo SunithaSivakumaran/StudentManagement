@@ -90,10 +90,13 @@ body {
 }
 
 .header-wrapper {
-  width: 100%;
-  height: 50px; /* gives space for absolute elements */
-  margin-bottom: 15px;
-  padding-top: 10px;
+  position: relative;
+  display: flex;
+  justify-content: space-between; /* title left, buttons right */
+  align-items: center;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin: 20px 10px 40px 10px;
 }
 
 .title {
