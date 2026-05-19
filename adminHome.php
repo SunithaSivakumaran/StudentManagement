@@ -33,6 +33,7 @@
 </head>
 <body>
     <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
+        
         <div class="header-wrapper">
 
             <h2 class="title">Student Details</h2>
@@ -42,7 +43,7 @@
                 <input type="submit" name='logout' value='Logout' class='btn'>
            </div>
         </div>
-    
+        
         <div class="wrapper-1">
                 <div class="table" >
                     <?php

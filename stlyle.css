@@ -90,7 +90,7 @@ body {
 }
 
 .header-wrapper {
-  position: relative;
+  position: sticky;
   display: flex;
   justify-content: space-between; /* title left, buttons right */
   align-items: center;
@@ -103,7 +103,7 @@ body {
   position: absolute;
   left: 0;
   top: 50%;
-  transform: translateY(-50%);
+ 
   font-size: 40px;
   font-family: sans-serif;
   color: #1f5fc6;
@@ -113,7 +113,7 @@ body {
   position: absolute;
   right: 0;
   top: 50%;
-  transform: translateY(-50%);
+  
 }
 
 .table {
