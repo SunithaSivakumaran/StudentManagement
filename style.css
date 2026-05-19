@@ -8,9 +8,14 @@ body {
   /* height: 100vh; */
   background-attachment: fixed;
 }
-
+.wrapper {
+  height: 100vh;
+  display: absolute;
+  justify-content: center;
+  align-items: center;
+}
 .box2 {
-  display: flex;
+  display: absolute;
   justify-content: center;
   border: 2px solid;
   border-color: rgb(6, 41, 97);
@@ -35,7 +40,7 @@ input {
     opacity 0.15s;
 }
 
-input:hover {
+input:hover{
   background-color: rgba(31, 95, 198, 0.085);
   border: rgb(6, 41, 97) solid 2px;
   color: rgb(6, 41, 97);
@@ -87,4 +92,23 @@ label {
     display: flex;
     justify-content: right;
     margin: 0px;
+}
+
+.heading{
+  text-align: center;
+  color: rgb(6, 41, 97);
+  font-family: sans-serif;
+}
+
+hr{
+  margin: 20px;
+}
+
+.success{
+  color: green;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+  margin: 20px ;
+  font-family: sans-serif;
 }

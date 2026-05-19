@@ -104,6 +104,23 @@
             }
         }
     
-    
+    function updateStudent($conn,$s_id,$column,$value){
+        $allowed=["name","email","pho_no","gender","DOB","address"];
+        if(in_array($column,$allowed)){
+
+            $query="UPDATE students SET $column=? WHERE s_id=?";
+            $stmt=mysqli_prepare($conn,$query);
+            mysqli_stmt_bind_param($stmt,"si",$value,$s_id);
+
+            if(mysqli_stmt_execute($stmt)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+
+    }
 
 ?>

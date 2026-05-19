@@ -9,6 +9,7 @@ include ("./functions/studentFunc.php");
     
         if($_SESSION['role']=='student'){
             $s_id=getStudent($conn,$_SESSION["id"]);
+            $_SESSION["s_id"]=$s_id;
             
         }
         elseif($_SESSION['role']=='admin'){
