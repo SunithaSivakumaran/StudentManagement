@@ -28,6 +28,17 @@ include ("./functions/studentFunc.php");
             exit();
         }
 
+        if(isset($_POST['update'])){
+            header("Location: updateStudent.php");
+            exit();
+
+        }
+
+        if(isset($_POST['course'])){
+            header("Location: course.php");
+            exit();
+        }
+
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +53,7 @@ include ("./functions/studentFunc.php");
     <div class="wrapper-2">
         <div class="box2">
     <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
-        <div class="btn"><button>Registered Courses</button></div>
+        <div class="btn"><button name="course">Course Details</button></div>
         <table>
             <tr>
                 <td>
@@ -100,8 +111,6 @@ include ("./functions/studentFunc.php");
                     :<input type="text" name="department" value="<?php echo infoStudent($conn,$s_id,'department')?>" readonly><br>
                 </td>
             </tr>
-           <tr>
-            
         </table>
             
             <div class="btn-grp">
