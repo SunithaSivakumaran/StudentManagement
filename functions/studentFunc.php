@@ -142,12 +142,27 @@
                         ";
                
                 while($arrayOfResult=mysqli_fetch_assoc($result)){
-                    
-                    echo "<tr>";
-                    echo "<td>{$arrayOfResult['course_unit']}</td>";
-                    echo "<td>{$arrayOfResult['course_name']}</td>";
-                    echo "<td><button name='enroll'>Enroll</button></td>";
-                
+                    $status="SELECT * FROM selections WHERE s_id=? AND course_unit=?";
+                    $stmt2=mysqli_prepare($conn,$status);
+                    mysqli_stmt_bind_param($stmt2,"is",$s_id,$arrayOfResult['course_unit']);
+                    mysqli_stmt_execute($stmt2);
+                    $result2=mysqli_stmt_get_result($stmt2);
+                    if($result2){
+                        $row2=mysqli_num_rows($result2);
+                        if($row2>0){
+                            echo "<tr>";
+                            echo "<td>{$arrayOfResult['course_unit']}</td>";
+                            echo "<td>{$arrayOfResult['course_name']}</td>";
+                            echo "<td class='success'>Enrolled</td>";
+                        }
+                        else{
+                            echo "<tr>";
+                            echo "<td>{$arrayOfResult['course_unit']}</td>";
+                            echo "<td>{$arrayOfResult['course_name']}</td>";
+                            echo "<td><button name='enroll' value='{$arrayOfResult['course_unit']}' '>Enroll</button></td>";
+                        }
+                        echo "</tr>";
+                    }
             }
                 echo "</table>";
             }
@@ -158,6 +173,23 @@
             else{
                 return false;
             }
+
+    }
+
+   
+
+    function enrollCourse($conn,$s_id,$course_unit){
+        $query="INSERT INTO selections (s_id,course_unit) VALUES (?,?)";
+        $stmt=mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,"is",$s_id,$course_unit);
+        try{
+            mysqli_stmt_execute($stmt);
+            return true;
+        }
+        catch(mysqli_sql_exception){
+            echo "<div class='error'>You have already enrolled in this course</div>";
+            return false;
+        }
 
     }
 
