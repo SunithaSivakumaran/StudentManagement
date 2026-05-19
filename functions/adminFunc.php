@@ -37,13 +37,15 @@
         
 
         try{
-            $result=mysqli_stmt_execute($stmt);
-        echo "<pre>";
-        var_dump($result);
-        echo "</pre>";
+            mysqli_stmt_execute($stmt);
+            return 1;
+        // echo "<pre>";
+        // var_dump($result);
+        // echo "</pre>";
         }
         catch(mysqli_sql_exception){
             echo "<div class='error'>User already exists</div>";
+            return 0;
         }
     }
 
