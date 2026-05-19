@@ -100,7 +100,7 @@ label {
   align-items: center;
   color: rgb(6, 41, 97);
   font-family: sans-serif;
-  display:absolute;
+  display: absolute;
 }
 
 hr {
@@ -121,7 +121,7 @@ hr {
   display: flex;
   position: relative;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
 
 .table {
@@ -138,13 +138,14 @@ hr {
 .table table {
   width: 100%;
   border-collapse: collapse;
-  border-color: #1f5fc6;
+  border: 2px solid rgb(15, 70, 159);
 }
 
 .table th,
 .table td {
   padding: 0px 40px;
   text-align: center;
+  border: 2px solid rgb(15, 70, 159);
 }
 
 .table th {
@@ -206,9 +207,8 @@ hr {
 
 .btn-grp2 {
   display: flex;
-  top: 2px;
+
   right: 0;
-  position:absolute;
+  position: absolute;
   font-size: 15px;
 }
-
