@@ -11,6 +11,19 @@
         exit();
 
     }
+
+    if(isset($_POST["reg-course"])){
+        header("Location: regCourse.php");
+        exit();
+    }
+
+    if(isset($_POST["enroll"])){
+        $status=enrollCourse($conn,$s_id,$_POST["enroll"]);
+        if($status){
+            
+        }
+        
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +35,9 @@
     <title>Course selection</title>
 </head>
 <body>
-    <div class="wrapper">
+   
+            <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
+                 <div class="wrapper">
         
                 <h2 class="heading" >
                     Available Courses
@@ -30,9 +45,9 @@
 
                  <div class="btn-grp2" >
                     <button name="back" >Back</button>
+                    <button name="reg-course">Registered Courses</button>
                 </div>
     </div>
-            <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
                 <div class="wrapper-1">
                 <div class="table">
                 
