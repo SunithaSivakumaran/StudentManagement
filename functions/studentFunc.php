@@ -123,4 +123,42 @@
 
     }
 
+    function availableCourses($conn,$s_id){
+        $department=infoStudent($conn,$s_id,'department');
+        $query="SELECT * FROM courses WHERE department=?";
+        $stmt=mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,"s",$department);
+        mysqli_stmt_execute($stmt);
+        $result=mysqli_stmt_get_result($stmt);
+        if($result){
+            $row=mysqli_num_rows($result);
+            if($row>0){
+                echo "<table>
+                        <tr>
+                        <th style='padding:10px 40px'>Course Unit</th>
+                        <th style='padding:10px 40px'>Course Name</th>
+                        <th style='padding:10px 40px'>Preference</th>
+                        </tr>
+                        ";
+               
+                while($arrayOfResult=mysqli_fetch_assoc($result)){
+                    
+                    echo "<tr>";
+                    echo "<td>{$arrayOfResult['course_unit']}</td>";
+                    echo "<td>{$arrayOfResult['course_name']}</td>";
+                    echo "<td><button name='enroll'>Enroll</button></td>";
+                
+            }
+                echo "</table>";
+            }
+            else{
+                echo "<div class='error'>There is no course available </div>";
+            }
+        }
+            else{
+                return false;
+            }
+
+    }
+
 ?>
