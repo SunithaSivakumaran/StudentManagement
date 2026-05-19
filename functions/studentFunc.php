@@ -150,10 +150,10 @@
                     if($result2){
                         $row2=mysqli_num_rows($result2);
                         if($row2>0){
-                            echo "<tr>";
+                            echo "<tr style='background-color: #28A745'>";
                             echo "<td>{$arrayOfResult['course_unit']}</td>";
                             echo "<td>{$arrayOfResult['course_name']}</td>";
-                            echo "<td class='success'>Enrolled</td>";
+                            echo "<td style='padding:10px 40px;color:white;'>Enrolled</td>";
                         }
                         else{
                             echo "<tr>";
@@ -192,5 +192,64 @@
         }
 
     }
+
+    function registeredCourses($conn,$s_id,$role){
+        $query="SELECT course_unit FROM selections WHERE s_id=?";
+        $stmt=mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,"i",$s_id);
+        mysqli_stmt_execute($stmt);
+        $result=mysqli_stmt_get_result($stmt);
+        if($result){
+            $row=mysqli_num_rows($result);
+            if($row>0){
+
+                    echo "<table>
+                            <tr>
+                            <th style='padding:10px 40px'>Course Unit</th>
+                            <th style='padding:10px 40px'>Course Name</th>";
+
+                    if($role=='admin'){
+                        echo "<th style='padding:10px 40px'>Drop</th>";
+                    }
+
+
+                    while($arrayOfResult=mysqli_fetch_assoc($result)){
+
+                        $course_name="SELECT course_name FROM courses WHERE course_unit=?";
+                        $stmt2=mysqli_prepare($conn,$course_name);
+                        mysqli_stmt_bind_param($stmt2,"s",$arrayOfResult['course_unit']);
+                        mysqli_stmt_execute($stmt2);
+                        $result2=mysqli_stmt_get_result($stmt2);
+                        if($result2){
+                            $arrayOfResult2=mysqli_fetch_assoc($result2);
+                            echo "<tr>";
+                            echo "<td style='padding:10px 40px'>{$arrayOfResult['course_unit']}</td>";
+                            echo "<td style='padding:10px 40px'>{$arrayOfResult2['course_name']}</td>";
+                            if($role=='admin'){
+                                echo "<td style='padding:10px 40px'><button name='drop' value='{$arrayOfResult['course_unit'] }'  style='background-color:red;color:white;border-color:red'>Drop</button></td>";
+                            }
+                            echo "</tr>";
+                        }
+
+                    }
+                }
+                else{
+                    if($role=='admin'){
+                        echo "<div class='error'>This student has not enrolled in any course yet</div>";
+                    }
+                    else{
+                        echo "<div class='error'>You have not enrolled in any course yet</div>";
+                    }
+                    
+                }           
+                
+                
+            
+            }
+            else{
+                echo "<div class='error'>You have not enrolled in any course yet</div>";
+            }
+        }
+       
 
 ?>

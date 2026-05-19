@@ -112,6 +112,18 @@
     }
 
 
+    function dropCourse($conn,$s_id,$course_unit){
+        $query="DELETE FROM selections WHERE s_id=? AND course_unit=?;";
+        $stmt=mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,"is",$s_id,$course_unit);
+        $result=mysqli_stmt_execute($stmt);
+        if($result){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
 
 
 ?>
